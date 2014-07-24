@@ -24,7 +24,7 @@ $this->bsd_default = '
 ["Link", "Unlink", "Anchor"],
 ["Image", "Flash", "Table", "SpecialChar"],
 ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord"],
-["ShowBlocks", "Source"]
+["ShowBlocks", "Source", "Twitter"]
 ';
 
 // END
