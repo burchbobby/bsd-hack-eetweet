@@ -113,19 +113,3 @@
 <body{if embed:body_id} id="{embed:body_id}"{/if}{if embed:body_class} class="{embed:body_class}"{/if}>
 	{!--the container div is closed in the footer after the closing </footer> tag--}
 	<div id="container">
-
-		<header role="banner">
-
-			<form class="signup" method="post" action="{path='page/s'}" role="form">
-				<label for="header-signup-email">Email Address</label>
-				<input type="email" name="email" title="Email Address" placeholder="Email Address" maxlength="254" id="header-signup-email" required="required">
-				<label for="header-signup-zip">Zip Code</label>
-				<input type="tel" name="zip" title="Zip Code" placeholder="Zip Code" id="header-signup-zip" maxlength="10" required="required">{!---pattern="^\d{5}(-\d{4})?$" will validate US zip codes --}
-				<input name="submit-btn" type="submit" value="Sign Up">
-			</form> <!-- /.signup -->
-
-			<nav role="navigation">
-
-			</nav>
-
-		</header>

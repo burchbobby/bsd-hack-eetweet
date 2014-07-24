@@ -1,15 +1,30 @@
-{sv_livelook}
 {preload_replace:tv_meta=""}
 {!-- Set the Homepage Meta Description Here --}
 
 {embed="includes/.header" body_id="home" meta_description="{tv_meta}"}
 
-{exp:channel:entries channel="feature" status="{tv_status}" disable="member_data|categories|pagination"}
-    {title}
-    {feature_image}
-    {feature_summary}
-    <a href="{feature_link}" title="Learn More">More&raquo;</a>
-    {sv_edit_me}
-{/exp:channel:entries}
+<div id="content">
+	<p>This is a test of the tweet scrape system.</p>
+	<button>Click this to make a span!</button>
+</div>
 
-{embed="includes/.footer" disqus="yes"}
+<script>
+function selectHTML() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    var tweetWrapper = document.createElement("span");
+    tweetWrapper.setAttribute("class", "tweet");
+    var tweetText = getSelection().getRangeAt(0);
+    tweetText.surroundContents(tweetWrapper);
+}
+
+jQuery(document).ready(function() {
+    jQuery("button").on("click", selectHTML);
+});
+</script>
+
+{embed="includes/.footer"}
