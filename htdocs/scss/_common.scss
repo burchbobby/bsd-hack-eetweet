@@ -1,0 +1,94 @@
+/* 02 =COMMON STYLES
+------------------------- */
+
+body {
+    font-size: 62.5%;
+}
+
+select, input, textarea {
+      color: $input-color;
+}
+
+h1, h2, h3, h4, h5, h6, .alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .omega {
+    font-weight: normal;
+}
+.omega {
+    @include font-size($h0-size...);
+}
+.alpha, .base h1 {
+    @include font-size($h1-size...);
+}
+.beta, .base h2 {
+    @include font-size($h2-size...);
+}
+.gamma, .base h3 {
+    @include font-size($h3-size...);
+}
+.delta, .base h4 {
+    @include font-size($h4-size...);
+}
+.epsilon, .base h5 {
+    @include font-size($h5-size...);
+}
+.zeta, .base h6 {
+    @include font-size($h6-size...);
+}
+.eta {
+    @include font-size($h7-size...);
+}
+
+.base p {
+    
+}
+
+a:hover, a:active {
+    outline: none;
+}
+
+a, a:active, a:visited {
+    color: #607890;
+}
+
+a:hover, a:focus {
+    color: #036;
+}
+
+a:link {
+    -webkit-tap-highlight-color: #FF5E99;
+}
+
+blockquote {
+    
+}
+
+.base ul, .base ol {
+    margin-left: 1.8em;
+}
+
+.base ul {
+    
+}
+
+.base ol {
+    
+}
+
+.base ul li, .base ol li {
+    
+}
+
+.base ul li {
+    list-style: disc;
+}
+
+.base ol li {
+    list-style:decimal;
+}
+
+.base li ol {
+    
+}
+
+.base li ul {
+    
+}
