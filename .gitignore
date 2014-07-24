@@ -1,0 +1,20 @@
+config.local.php
+config.local.sample
+#/system/expressionengine/cache/*
+
+# Build Items #
+######################
+dist
+node_modules
+components
+.sass-cache
+*.dev.css
+*.dev.js
+htdocs/css
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
