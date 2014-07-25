@@ -4,49 +4,30 @@
 {embed="includes/.header" body_id="home" meta_description="{tv_meta}"}
 
 <div id="content" class="row homepage container">
-    <h1 class="title">Highlight <span><img src="/hackathonlogo.png" alt="Happy Hackathon" height="50"></span></h1>
-    <h2>to share on Facebook and Twitter</h2>
+    <div class="logo">
+        <img src="/hackathonlogo.png" alt="Happy Hackathon"/>
 
-    <div class="test">
+    </div>
+
+    <div class="ee-tweets">
+        <h3>Tweetable Content Through EE</h3>
         {exp:channel:entries channel="test" limit="1"}
             {tweet_test}
         {/exp:channel:entries}
     </div>
+
+    <div class="highlight-to-share">
+        <h3>Highlight to Share</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, eos ratione placeat recusandae quae, minima eum earum enim quam, voluptas omnis expedita ipsum laudantium quasi, repellat tenetur quaerat non accusamus.</p>
+        <p>Distinctio culpa nulla veniam, itaque eaque similique iure ut et porro, deserunt nesciunt esse inventore? Odit, voluptas, voluptatem. Eveniet, cupiditate, quos. Vero nisi hic totam laudantium dolores ea iusto reprehenderit!</p>
+        <p>A similique totam explicabo laudantium magni nulla, velit non, accusamus asperiores. Cupiditate esse voluptas distinctio, incidunt. Libero qui fugiat reprehenderit rerum nulla voluptatibus deleniti id atque quaerat perspiciatis. Sapiente, quam?</p>
+    </div>
     
 </div>
 
-<style>
-a.tweet-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    background: red;
-}
-blockquote {
-    position: relative;
-}
-</style>
-
 <script>
-function selectHTML() {
-    var text = "";
-    if (window.getSelection) {
-        text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != "Control") {
-        text = document.selection.createRange().text;
-    }
-    var tweetWrapper = document.createElement("span");
-    tweetWrapper.setAttribute("class", "tweet");
-    var tweetText = getSelection().getRangeAt(0);
-    tweetText.surroundContents(tweetWrapper);
-}
 
-jQuery(document).ready(function() {
-    jQuery("button").on("click", selectHTML);
-});
+jQuery('.highlight-to-share').hish();
 
 /* CREATE THE BUTTON ON THE FLY, WHY, I DON'T KNOW */
 jQuery(document).ready(function() {
@@ -87,22 +68,6 @@ jQuery(document).ready(function() {
 
     });
 
-});
-
-jQuery(document).on('click', '.beet', function(e) {
-    e.preventDefault();
-
-    var twitterParams = {
-        text: jQuery(this).data('description'),
-        via: 'unfoundation',
-        url: jQuery(this).data('link')
-    };
-
-    twitterParams = jQuery.param(twitterParams);
-
-    var url = 'https://twitter.com/share?' + twitterParams;
-
-    window.open(url, 'twitter', 'height=400,width=600,wrap_links=true');
 });
 </script>
 

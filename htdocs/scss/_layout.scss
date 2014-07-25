@@ -19,16 +19,22 @@ h1, h2 { margin: 0;}
 h2 {font-weight: 400;}
 
 blockquote {
+	font-size: 150%;
 	&.tweet {
-		border-left: solid 1px #4099FF;
-		padding: 10px;
+		padding-right: 60px;
 		position: relative;
 		margin-left: 60px;
 	}
-	&.tweet::before {
-		content: 'tweet';
-		position: absolute;
-		left: -45px;
-		color: #4099FF;
-	}
+}
+
+a.tweet-button {
+	box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    height: 33px;
+    width: 30px;
+    font-size: 30px;
+    padding: 5px 0;
 }
