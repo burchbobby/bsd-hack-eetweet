@@ -1,2 +1,34 @@
 /* 03 =LAYOUT
 ------------------------- */
+
+
+#content {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	width: 75%;
+ 	margin: 20px auto; 
+	position: relative;
+}
+
+h1, h2 { margin: 0;}
+
+.title {
+	font-weight: normal;
+	font-size: 70px;
+}
+
+h2 {font-weight: 400;}
+
+blockquote {
+	&.tweet {
+		border-left: solid 1px #4099FF;
+		padding: 10px;
+		position: relative;
+		margin-left: 60px;
+	}
+	&.tweet::before {
+		content: 'tweet';
+		position: absolute;
+		left: -45px;
+		color: #4099FF;
+	}
+}

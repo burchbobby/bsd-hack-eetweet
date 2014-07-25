@@ -3,28 +3,16 @@
 
 {embed="includes/.header" body_id="home" meta_description="{tv_meta}"}
 
-<div id="content">
+<div id="content" class="row homepage">
+    <h1 class="title">Highlight <span><img src="/hackathonlogo.png" alt="Happy Hackathon" height="50"></span></h1>
+    <h2>to share on Facebook and Twitter</h2>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, consequuntur, sunt, itaque maiores nihil repellendus quod dignissimos temporibus alias laboriosam eum possimus laudantium amet sint laborum accusantium beatae odio! Qui.</p>
+
+    <p>Accusamus consectetur iusto recusandae earum necessitatibus ea facilis adipisci fugiat excepturi vero. Impedit, unde itaque reiciendis quas atque maxime perspiciatis ullam nam!Est, earum eligendi a placeat veritatis inventore porro quos velit! Ut excepturi tempore et nisi enim voluptas quibusdam natus voluptatum dolorem voluptates.</p>
+
 	<p>This is a test of the tweet scrape system.</p>
 	<button>Click this to make a span!</button>
 </div>
-
-<script>
-function selectHTML() {
-    var text = "";
-    if (window.getSelection) {
-        text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != "Control") {
-        text = document.selection.createRange().text;
-    }
-    var tweetWrapper = document.createElement("span");
-    tweetWrapper.setAttribute("class", "tweet");
-    var tweetText = getSelection().getRangeAt(0);
-    tweetText.surroundContents(tweetWrapper);
-}
-
-jQuery(document).ready(function() {
-    jQuery("button").on("click", selectHTML);
-});
-</script>
 
 {embed="includes/.footer"}
