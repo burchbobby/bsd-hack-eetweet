@@ -77,4 +77,92 @@ input:valid, textarea:valid {
     color:$selection-text-color;
     text-shadow: none;
 }
+
+#hish-share-wrapper {
+    display:none;
+    z-index:500;
+    position:absolute;
+    background:#262625;
+    box-shadow:0 0 2px #262625;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    min-width: 75px;
+    padding: 5px;
+    font-size: 1.5em;
+        -webkit-animation-delay:0;
+        -webkit-animation-direction:normal;
+        -webkit-animation-duration:.18s;
+        -webkit-animation-fill-mode:forwards;
+        -webkit-animation-iteration-count:1;
+        -webkit-animation-name:pop-upwards;
+        -webkit-animation-timing-function:linear;
+        -webkit-transition-delay:0 0;
+        -webkit-transition-duration:.075s .075s;
+        -webkit-transition-property:top, left;
+        -webkit-transition-timing-function:ease-out, ease-out;
+    transition-delay:0 0;
+    transition-duration:.075s .075s;
+    transition-property:top, left;
+    transition-timing-function:ease-out, ease-out;
+    &::after {
+        content:'';
+        display:block;
+        position:absolute;
+        bottom:-4px;
+        left:50%;
+        margin-left:-4px;
+        width: 8px;
+        height: 8px;
+            -webkit-transform:rotate(45deg);
+            -moz-transform:rotate(45deg);
+            -o-transform:rotate(45deg);
+        transform:rotate(45deg);
+        background:#262625;
+        box-shadow:0 0 2px #262625;
+    }
+}
+
+#hish-share-popover-inner {
+    height:auto;
+    width:auto;
+    background-repeat:repeat-x;
+    background-image:linear-gradient(rgba(49,49,47,0.972549), #262625;
+    -webkit-box-shadow:rgba(0,0,0,0.701961) 0 1px 3px -1px rgba(255,255,255,0.0666667) 0 0 1px 0 inset, rgba(255,255,255,0.14902) 0 0 2px 0 inset;
+    box-shadow:rgba(0,0,0,0.701961) 0 1px 3px -1px rgba(255,255,255,0.0666667) 0 0 1px 0 inset, rgba(255,255,255,0.14902) 0 0 2px 0 inset;
+    border:1px solid;
+    border-radius:5px;
+    border-color:#262625 #1c1c1b #121211;
+}
+
+
+#hish-share-facebook i {
+    
+}
+
+#hish-share-twitter i {
+    
+}
+
+#hish-share-arrow-wrapper {
+    display:block;
+    position:absolute;
+    bottom:-11px;
+    left:50%;
+    clip:rect(12px24px24px0);
+    margin-left:-12px;
+    color:#333332;
+}
+
+#hish-share-arrow {
+    display:block;
+    width:20px;
+    height:20px;
+    -webkit-transform:rotate(45deg) scale(0.5);
+    -moz-transform:rotate(45deg) scale(0.5);
+    -o-transform:rotate(45deg) scale(0.5);
+    transform:rotate(45deg) scale(0.5);
+    background-color:#454543;
+    border:2px solid #121211;
+}
  
