@@ -53,12 +53,46 @@
       _this.hide();
     });
 
-    $('#hish-share-facebook').click(function(e) {
-      var facebook_dialog_url = "https://www.facebook.com/sharer/sharer.php?u=" + document.URL;
-      var facebook_popup = window.open(facebook_dialog_url,'facebook-share','height=600,width=500');
-      if (window.focus) {facebook_popup.focus()}
-      _this.hide();
-    });
+    // $('#hish-share-facebook').click(function(e) {
+    //   var facebook_dialog_url = "https://www.facebook.com/sharer/sharer.php?u=" + document.URL;
+    //   var facebook_popup = window.open(facebook_dialog_url,'facebook-share','height=600,width=500');
+    //   if (window.focus) {facebook_popup.focus()}
+    //   _this.hide();
+    // });
+
+    //fb-sharer 
+    jQuery('#hish-share-facebook').on('click', function(e) {
+        e.preventDefault();
+
+        var $this = jQuery(this),
+            name = 'Hackathon Project',
+            link = 'http://www.bluestatedigital.com/',
+            picture = 'http://www.bluestatedigital.com/page/-/agency-new/site/images/blue-state-digital.jpg',
+            description = 'Hackathon project to highlight and share to facebook and twitter';
+         
+        FB.init({
+            appId: '327572920728706',
+            status: true,
+            cookie: true
+        });
+ 
+        FB.ui({
+            method: 'feed',
+            display: 'popup',
+            name: name,
+            link: link,
+            picture: picture + "?nocdn=1", //serve the non-CDN version of the image
+            description: description
+        });
+    });
+    
+      (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "http://connect.facebook.net/en_US/all.js";
+          fjs.parentNode.insertBefore(js, fjs);
+      } (document, 'script', 'facebook-jssdk'));
 
     $('#hish-share-twitter').click(function(e) {
       var twitter_intent_url = "https://twitter.com/intent/tweet?text=" + _this.getText() + "&url=" + document.URL;
