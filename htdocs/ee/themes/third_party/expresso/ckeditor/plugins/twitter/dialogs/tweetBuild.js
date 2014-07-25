@@ -7,10 +7,9 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
     var url = '';
 
     function getRemainingChars(element) {
-        var tweetLength = element.getDialog().getContentElement('tab-basic', 'tweet').getElement().getHtml().length;
-        console.log(tweetLength);
+        tweet = livetext + ' ' + via + ' ' + url;
+        var tweetLength = tweet.length;
         var remainingChars = 140 - tweetLength;
-        console.log(remainingChars);
         var remainingElement = element.getDialog().getContentElement('tab-basic', 'remainingchars').getElement();
         remainingElement.setHtml('Remaining Characters: ' + remainingChars);
     }
@@ -26,16 +25,11 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
                 type: 'textarea',
                 id: 'livetext',
                 label: 'Text',
-                onChange: function() {
+                onChange: function(element) {
+                    livetext = this.getValue();
                     getRemainingChars(this);
                 },
-                onLoad: function(element) {
-                    var selection = editor.getSelection();
-                    var selectedText = selection.getSelectedText();
-                    this.setValue(selectedText);
-                },
                 setup: function(element) {
-                    console.log('Getting text: ' + element.getText());
                     this.setValue(element.getText());
                 },
                 commit: function(element) {
@@ -58,7 +52,11 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
                 type: 'text',
                 id: 'via',
                 label: 'Via',
-                onChange: function() {
+                onChange: function(element) {
+                    via = this.getValue();
+                    if (via.length) {
+                        via = 'via @' + via;
+                    }
                     getRemainingChars(this);
                 },
                 setup: function(element) {
@@ -71,7 +69,8 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
                 type: 'text',
                 id: 'url',
                 label: 'URL',
-                onChange: function() {
+                onChange: function(element) {
+                    url = this.getValue();
                     getRemainingChars(this);
                 },
                 setup: function(element) {
@@ -83,10 +82,9 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
             }]
         }],
         onShow: function() {
+
             var selection = editor.getSelection();
             var selectedText = selection.getSelectedText();
-
-            console.log(selectedText);
             element = selection.getStartElement();
             if (element) {
                 element = element.getAscendant('blockquote', true);
@@ -97,6 +95,9 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
                 element.setAttribute('class', 'tweet');
 
                 this.insertMode = true;
+
+                this.getContentElement('tab-basic', 'livetext').setValue(selectedText);
+
             } else {
                 this.insertMode = false;
             }
@@ -105,6 +106,8 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
 
             if (!this.insertMode) {
                 this.setupContent(this.element);
+            } else {
+
             }
 
         },
