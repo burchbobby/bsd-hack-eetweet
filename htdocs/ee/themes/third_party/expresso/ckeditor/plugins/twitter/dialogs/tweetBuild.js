@@ -8,6 +8,7 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
 
     function getRemainingChars(element) {
         tweet = livetext + ' ' + via + ' ' + url;
+        console.log('Tweet: ' + tweet);
         var tweetLength = tweet.length;
         var remainingChars = 140 - tweetLength;
         var remainingElement = element.getDialog().getContentElement('tab-basic', 'remainingchars').getElement();
@@ -54,8 +55,11 @@ CKEDITOR.dialog.add('insertTweet', function(editor) {
                 label: 'Via',
                 onChange: function(element) {
                     via = this.getValue();
-                    if (via.length) {
+                    console.log('Via : ' + via);
+                    if (via.length > 1) {
                         via = 'via @' + via;
+                    } else {
+                        via = '';
                     }
                     getRemainingChars(this);
                 },
