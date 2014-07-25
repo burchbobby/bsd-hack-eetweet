@@ -3,10 +3,30 @@
 
 {embed="includes/.header" body_id="home" meta_description="{tv_meta}"}
 
-<div id="content">
-	<p>This is a test of the tweet scrape system.</p>
-	<button>Click this to make a span!</button>
+<div class="container">
+    
+    <div class="test">
+        {exp:channel:entries channel="test" limit="1"}
+            {tweet_test}
+        {/exp:channel:entries}
+    </div>
+    
 </div>
+
+<style>
+a.tweet-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background: red;
+}
+blockquote {
+    position: relative;
+}
+</style>
 
 <script>
 function selectHTML() {
@@ -24,6 +44,63 @@ function selectHTML() {
 
 jQuery(document).ready(function() {
     jQuery("button").on("click", selectHTML);
+});
+
+/* CREATE THE BUTTON ON THE FLY, WHY, I DON'T KNOW */
+jQuery(document).ready(function() {
+    var tweets = jQuery(document).find('blockquote.tweet');
+    if (tweets.length) {
+        jQuery.each(tweets, function(index, tweet) {
+            console.log(tweet);
+            var tweetButton = document.createElement("a");
+            tweetButton.setAttribute("class", "tweet-button");
+            tweetButton.setAttribute("href", "#"); // Heh
+            jQuery(tweet).append(tweetButton);
+        })
+    }
+
+    jQuery(document).on('click', 'a.tweet-button', function(e) {
+        e.preventDefault();
+        var tweetInfo = jQuery(this).parent();
+        var tweetText = jQuery(tweetInfo)
+            .clone()    //clone the element
+            .children() //select all the children
+            .remove()   //remove all the children
+            .end()  //again go back to selected element
+            .text();    //get the text of element
+
+        tweetText = jQuery.trim(tweetText);
+
+        var tweetParams = {
+            text: tweetText,
+            via: jQuery(tweetInfo).data('via'),
+            url: jQuery(tweetInfo).data('url')
+        };
+
+        tweetParams = jQuery.param(tweetParams);
+
+        var url = 'https://twitter.com/share?' + tweetParams;
+
+        window.open(url, 'twitter', 'height=400,width=600,wrap_links=true');
+
+    });
+
+});
+
+jQuery(document).on('click', '.beet', function(e) {
+    e.preventDefault();
+
+    var twitterParams = {
+        text: jQuery(this).data('description'),
+        via: 'unfoundation',
+        url: jQuery(this).data('link')
+    };
+
+    twitterParams = jQuery.param(twitterParams);
+
+    var url = 'https://twitter.com/share?' + twitterParams;
+
+    window.open(url, 'twitter', 'height=400,width=600,wrap_links=true');
 });
 </script>
 

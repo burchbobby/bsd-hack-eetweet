@@ -22,4 +22,5 @@ CKEDITOR.editorConfig = function(config) {
     ];
 
     config.stylesSet = 'default';
+    CKEDITOR.dtd.$removeEmpty['a'] = false;
 };
